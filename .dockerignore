@@ -1,0 +1,9 @@
+# artifacts
+/build
+
+# vscode
+.history
+.vscode
+
+# vcs
+.git

@@ -1,0 +1,15 @@
+/**
+ * This is the default style for the boilerplate
+ * To remove this, delete the line that imports this file in `main.scss`
+ */
+
+.default-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  align-items: center;
+  .default-paragraph {
+    text-align: center;
+    max-width: 50%;
+  }
+}
