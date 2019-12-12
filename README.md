@@ -1,4 +1,4 @@
-# Fuse React Boilerplate
+# React redux with typescript
 
 This is a initiative aimed to increase development velocity of frontend developers for React projects. This is the starting point for all new projects.
 
