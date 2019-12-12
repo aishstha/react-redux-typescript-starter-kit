@@ -1,16 +1,16 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-// import Footer from 'components/common/footer';
-// import Header from 'components/common/header';
+import Footer from '../common/footer';
+import Header from '../common/header';
 
 import DashboardRouter from './DashboardRouter';
 
 const Dashboard: React.SFC<RouteComponentProps<{}>> = () => (
   <div>
-    {/* <Header /> */}
+    <Header />
     <DashboardRouter />
-    {/* <Footer /> */}
+    <Footer />
   </div>
 );
 

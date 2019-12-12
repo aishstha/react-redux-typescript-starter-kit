@@ -16,8 +16,6 @@ class Detail extends React.Component<IDetailProps, IDetailState> {
   }
 }
 
-const mapStateToProps = ({ session }: any) => ({
-  user: session.user
-});
+const mapStateToProps = ({  }: any) => ({});
 
 export default connect(mapStateToProps)(Detail);

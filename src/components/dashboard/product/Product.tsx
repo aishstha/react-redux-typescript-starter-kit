@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
 import { getAllProducts } from '../../../service';
 
 interface IProductProps {}
@@ -17,6 +18,22 @@ class Product extends React.Component<IProductProps, IProductState> {
   }
 }
 
-const mapStateToProps = ({  }: any) => ({});
+const mapStateToProps = (store: any) => {
+  const {
+    router: { location }
+  } = store;
+  return {
+    location
+  };
+};
 
-export default connect(mapStateToProps)(Product);
+const mapDispatchToProps = (dispatch: any) => ({
+  setTenant: () => {
+    dispatch(getAllProducts());
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Product);

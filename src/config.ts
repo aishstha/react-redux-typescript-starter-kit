@@ -6,7 +6,7 @@ const api = '/api';
 
 let baseURI = 'http://localhost:3045';
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
   baseURI = ''; //TODO: Keep production url
 }
 
