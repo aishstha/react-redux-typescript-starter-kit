@@ -1,18 +1,22 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 
 import { HOME } from '../constants/routes';
 
 import Dashboard from './dashboard';
 
-import { designRoutes } from '../constants/designroute';
+let Design: any;
+if (process.env.NODE_ENV === 'development') {
+  Design = React.lazy(() => import('../components/design'));
+}
 
 const AppRouter: React.SFC<{}> = () => (
   <Switch>
-    {process.env.NODE_ENV === 'development' &&
-      designRoutes.map(route => <Route key={route.path} path={route.path} component={route.component} exact={true} />)}
+    <React.Suspense fallback={<span>Loading...</span>}>
+      {Design && <Route path="/design" component={Design} />}
 
-    <Route path={HOME} component={Dashboard} />
+      <Route path={HOME} component={Dashboard} />
+    </React.Suspense>
   </Switch>
 );
 
