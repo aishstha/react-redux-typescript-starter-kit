@@ -1,0 +1,142 @@
+
+/**
+ * Font Weight classes
+ * Class Name: fw-100, fw-200, ..., fw-800
+ */
+@for $i from 1 through 8 {
+    &.fw-#{$i*100} {
+        font-weight: #{$i*100};
+    }
+}
+
+/***********************************************************
+*********************** Margin *****************************
+***********************************************************/
+
+.m-l-10 {
+    margin-left: 10px;
+}
+.m-l-auto {
+    margin-left: auto;
+}
+
+.m-r-2 {
+    margin-right: 2px;
+}
+
+.m-t-60 {
+    margin-top: 60px;
+}
+
+.m-b-60 {
+    margin-bottom: 60px;
+}
+
+/***********************************************************
+******************** Backgrounds ***************************
+***********************************************************/
+
+.bg--white {
+    background: $white!important;
+}
+
+.bg--gray {
+    background: map-get($white-fn, off-white);
+}
+
+/***********************************************************
+********************** UTILITIES ***************************
+***********************************************************/
+
+
+.remove-dropdown-arrow::after {
+    border: 0px;
+    content: none; /* Remove After from HTML DOM [Stackoverflow](https://stackoverflow.com/questions/3012716/css-how-to-remove-pseudo-elements-after-before) */
+}
+
+.display-none {
+    display: none;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.cursor-pointer {
+    cursor: pointer!important;
+}
+
+.cursor-move {
+    cursor: move!important;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.icons, .arrows {
+    stroke: #333;
+    stroke-width: 4;
+    &-left-arrow-long {
+        // stroke: #9c9a9d;
+        stroke-width: 6;
+    }
+}
+
+.arrows {
+    fill: none;
+}
+
+.fixed--margin {
+    margin-top: 63px;
+}
+
+.page-header {
+    font-size: 18px;
+    line-height: 23px;
+    margin-bottom: 23px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    &--draft {
+        background-color: $white-dark-10;
+        border: 1px solid darken($color: $white-dark-10, $amount: 10%);
+    }
+    &--ready {
+        background-color: map-get($blue-fn, dark-10);
+        border: 1px solid darken($color: (map-get($blue-fn, dark-10)), $amount: 10%);
+    }
+    &--live {
+        background-color: $green;
+        border: 1px solid darken($color: $green, $amount: 10%);
+    }
+    &--complete {
+        background-color: $text-color;
+        border: 1px solid darken($color: $text-color, $amount: 10%);
+    }
+    &--paused {
+        background-color: $orange;
+        border: 1px solid darken($color: $orange, $amount: 10%);
+    }
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid $white;
+    &.circle--red {
+        background: $red;
+    }
+    &.circle--orange {
+        background: $orange
+    }
+    &.circle--green {
+        background: #70DC29;
+    }
+}

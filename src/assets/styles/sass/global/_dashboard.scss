@@ -1,0 +1,88 @@
+@import "./reset.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+.navbar {
+  background-color: #eee;
+  height: 100vh;
+  position: fixed;
+  width: 150px;
+
+  &__brand {
+    display: block;
+    padding: 16px;
+    .brand-logo {
+      width: 100%;
+    }
+  }
+
+  &__menu {
+    &--primary {
+      margin-bottom: 150px;
+    }
+
+    .menu-item {
+      .menu-item-link {
+        color: #333;
+        display: block;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.title {
+  color: #868686;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.page-content {
+  margin-left: 150px;
+  padding: 12px 24px;
+  width: calc(100% - 150px);
+}
+
+.jumbotron {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgb(49, 61, 142) 0%,
+    rgb(77, 93, 207) 100%
+  );
+  display: flex;
+  padding: 12px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.section {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -9px;
+
+    .col {
+      width: 380px;
+      padding: 9px;
+
+      .card {
+        border: 1px solid #eee;
+        border-radius: 6px;
+        padding: 12px;
+        display: flex;
+
+        &__body {
+          padding: 12px;
+        }
+      }
+    }
+  }
+}

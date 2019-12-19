@@ -6,6 +6,8 @@ import ProductDetail from './productDetail';
 const Overview: React.SFC<{}> = () => {
   return (
     <div>
+      {/* Keep search box here */}
+      {/* <div className="search">search box</div> */}
       <Summary />
       <ProductDetail />
     </div>

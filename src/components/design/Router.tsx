@@ -3,11 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 
 import Example from './Example';
 import DesignMain from './Main';
+import { designRoutes } from '../../constants/designroute';
 
 const DesignRouter = () => (
   <Switch>
-    <Route exact path="/design/example" component={Example} />
-    <Route path="/design" component={DesignMain} />
+    {designRoutes.map(route => (
+      <Route key={route.path} path={route.path} component={route.component} exact={true} />
+    ))}
   </Switch>
 );
 

@@ -1,5 +1,5 @@
-export const HOME: '/' = '/';
+export const HOME: string = '/';
 
-export const LOGIN: '/login' = '/login';
-export const DETAILS: '/detail' = '/detail';
-export const REPORT: '/report' = '/report';
+export const LOGIN: string = '/login';
+export const DETAILS: string = '/detail';
+export const REPORT: string = '/report';

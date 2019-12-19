@@ -1,67 +1,80 @@
-// import * as React from 'react';
-
-// const ProductDetail: React.SFC<{}> = () => {
-//   return (
-//     <div style={{ backgroundColor: 'lightblue', height: '179px', left: '180px', width: '1168px' }}>
-//       <div style={{ marginTop: '15px', height: '146px' }}>
-//         <div style={{ height: '138px', left: '12px', width: '211px', backgroundColor: 'green' }}>
-//           SUBSCRIBED INGREDIENTS:22 <br /> WATCHED INGREDIENTS: 23 <br /> ACTIVE PRODUCTS:55 <br /> CONCEPT PRODUCTS:23{' '}
-//           <br /> PRODUCT TYPE:Fruit Snack
-//           {/* <div style={{ box-sizing: 'border-box', z-index: 46, height: '135px', width: '240.427px', left: '1.42109e-14px', top: '6px', border-radius: '0px'}}> */}
-//           {/* <div style={{margin-top: 8px; height: 40px; height: '138px', left: '12px', width: '211px', backgroundColor: 'green' }}>HELLO</div> */}
-//           {/* </div> */}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductDetail;
-
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { getSubscribedIngredients } from '../../../../service/api/overview.service';
+import { getSubscribedIngredients, moveToWatchList } from '../../../../service/api/overview.service';
+import { IWatchList } from '../../../interface/overview.interface';
 
 interface IProductDetail {
-  email: string;
-  watched_ingredients: Array<string>;
-  subscribed_ingredients: Array<string>;
-  products: Array<string>;
-  subscription_tier: string;
+  name: string;
+  ingredient_list: any;
+  version: string;
+  product_type: string;
+  product_size: string;
+  id: string | number;
 }
 
 interface IProductDetailProps {
   getSubscribedIngredients: () => void;
-  subscribedIngredients: any;
+  subscribedIngredients: Array<IProductDetail>;
+  moveToWatchList: (data: IWatchList) => void;
 }
 
-interface IProductDetailState {}
+interface IProductDetailState {
+  subscribedIngredients: any;
+}
 
 class ProductDetail extends React.Component<IProductDetailProps, IProductDetailState> {
   constructor(props: any) {
     super(props);
-    this.state = {};
+    this.state = {
+      subscribedIngredients: this.props.subscribedIngredients
+    };
   }
 
   componentDidMount() {
     this.props.getSubscribedIngredients();
   }
 
-  render() {
-    console.log('his.props.subscribedIngredient', this.props.subscribedIngredients);
-    // const { name } = this.props.subscribedIngredients;
-    return (
-      // <div style={{ backgroundColor: 'lightblue', height: '179px', left: '180px', width: '1168px' }}>
+  unsubscribe() {}
 
+  render() {
+    const { subscribedIngredients } = this.props;
+    return (
       <React.Fragment>
-        hello
-        {this.props.subscribedIngredients.length > 0 &&
-          this.props.subscribedIngredients.map((ingredient: any) => {
-            // return <p>{ingredient.name}</p>;
-          })}
+        <div className="section">
+          <div className="title">Subscribed Products</div>
+          <div className="row">
+            {subscribedIngredients.length != 0 ? (
+              subscribedIngredients.map((item: any, i: any) => {
+                return (
+                  <div className="col">
+                    <div className="card">
+                      <div className="card__img">
+                        <img
+                          src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1571381312196x387341780865173570%2Fstrawberry.png?w=192&h=291&auto=compress&fit=max"
+                          alt=""
+                        />
+                      </div>
+                      <div className="card__body">
+                        <h2>{item.name}</h2>
+                        <div>contents</div>
+                        <input type="button" value="Unsubscribe" onClick={this.unsubscribe} />
+                        <input
+                          type="button"
+                          value="Move to Watchlist"
+                          onClick={() => this.props.moveToWatchList({ name: item.name })}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <p>'Test'</p>
+            )}
+          </div>
+        </div>
       </React.Fragment>
-      // </div>
     );
   }
 }
@@ -76,7 +89,8 @@ const mapStateToProps = (store: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-  getSubscribedIngredients: () => dispatch(getSubscribedIngredients())
+  getSubscribedIngredients: () => dispatch(getSubscribedIngredients()),
+  moveToWatchList: (data: IWatchList) => dispatch(moveToWatchList(data))
 });
 
 export default connect(

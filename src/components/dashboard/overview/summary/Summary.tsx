@@ -31,19 +31,36 @@ class Summary extends React.Component<ISummaryProps, ISummaryState> {
   render() {
     const { subscription_tier, watched_ingredients, subscribed_ingredients } = this.props.summary;
     return (
-      <div style={{ backgroundColor: 'lightblue', height: '179px', left: '180px', width: '1168px' }}>
-        {this.props.summary && (
-          <div style={{ marginTop: '15px', height: '146px' }}>
-            <div style={{ height: '138px', left: '12px', width: '211px', backgroundColor: 'green' }}>
-              SUBSCRIBED INGREDIENTS:
-              {subscribed_ingredients && subscribed_ingredients.length}
-              <br /> WATCHED INGREDIENTS:
-              {watched_ingredients && watched_ingredients.length}
-              <br /> ACTIVE PRODUCTS:55 <br /> CONCEPT PRODUCTS:23 <br /> PRODUCT TYPE:
-              {subscription_tier}
-            </div>
+      <div className="jumbotron">
+        <div>
+          <h2>Journey Foods</h2>
+        </div>
+        <div>
+          <div>
+            <p>Subscribed Ingriendts</p>
+            <span>18</span>
           </div>
-        )}
+          <div>
+            <p>Watched Ingriendts</p>
+            <span>18</span>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p>Active Products</p>
+            <span>18</span>
+          </div>
+          <div>
+            <p>Concept Prodicts</p>
+            <span>18</span>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p>Product Types</p>
+            <span>Fruit Snack</span>
+          </div>
+        </div>
       </div>
     );
   }

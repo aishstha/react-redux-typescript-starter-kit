@@ -12,7 +12,7 @@ class Detail extends React.Component<IDetailProps, IDetailState> {
   }
 
   render() {
-    return <React.Fragment>Detail</React.Fragment>;
+    return <div className="page-content">Report</div>;
   }
 }
 
