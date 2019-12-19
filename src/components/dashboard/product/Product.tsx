@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { getAllProducts } from '../../../service';
+// import { getAllProducts } from '../../../service';
+import { getAllProducts } from '../../../service/api/sample.service';
 
-interface IProductProps {}
+interface IProductProps {
+  getAllProducts: () => void;
+}
 
 interface IProductState {}
 
@@ -11,6 +14,10 @@ class Product extends React.Component<IProductProps, IProductState> {
   constructor(props: any) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    this.props.getAllProducts();
   }
 
   render() {
@@ -28,9 +35,10 @@ const mapStateToProps = (store: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-  setTenant: () => {
-    dispatch(getAllProducts());
-  }
+  // getAllProducts: () => {
+  //   dispatch(getAllProducts());
+  // }
+  getAllProducts: () => dispatch(getAllProducts())
 });
 
 export default connect(

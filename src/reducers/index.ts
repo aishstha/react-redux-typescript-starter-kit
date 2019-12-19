@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { RouterState, connectRouter } from 'connected-react-router';
 
 import simpleReducer from './simpleReducer';
+import overviewReducer from './overviewReducer';
 
 export interface ReduxState {
   router: RouterState;
@@ -15,7 +16,16 @@ export interface ReduxState {
 const createRootReducer = (history: History) =>
   combineReducers({
     router: connectRouter(history),
-    simpleReducer
+    simpleReducer,
+    overviewReducer
   });
 
+export interface ISimpleReducer {}
+export interface IOverviewReducer {}
+
+export interface IAppplicationState {
+  router: RouterState;
+  simpleReducer: ISimpleReducer;
+  overviewReducer: IOverviewReducer;
+}
 export default createRootReducer;

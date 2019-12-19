@@ -6,8 +6,14 @@ export default (state = {}, action) => {
     case 'SIMPLE_ACTION':
       return {
         result: action.payload
-      }
+      };
+    //TODO CHANGE THIS
+
+    case 'GET_ALL_PRODUCTS':
+      return {
+        result: action.payload
+      };
     default:
-      return state
+      return state;
   }
-}
+};
