@@ -4,3 +4,4 @@
  */
 
 import './assets/styles/sass/main.scss';
+import 'react-toastify/dist/ReactToastify.css';
