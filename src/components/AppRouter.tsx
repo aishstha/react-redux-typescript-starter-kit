@@ -15,7 +15,7 @@ const AppRouter: React.SFC<{}> = () => (
     <React.Suspense fallback={<span>Loading...</span>}>
       {Design && <Route path="/design" component={Design} />}
 
-      <Route exact path={HOME} component={Dashboard} />
+      <Route path={HOME} component={Dashboard} />
     </React.Suspense>
   </Switch>
 );
