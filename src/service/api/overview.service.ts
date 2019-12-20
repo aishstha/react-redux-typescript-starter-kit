@@ -20,7 +20,7 @@ export function getSummary() {
 
 export function getSubscribedIngredients() {
   return async (dispatch: Dispatch<any>, getState: () => IAppplicationState) => {
-    const URL = `/user/subscribed`;
+    const URL = `/user/ingredient/subscribed`;
     try {
       const response: AxiosResponse = await axios.get(URL);
 
