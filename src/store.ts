@@ -1,10 +1,10 @@
 import { routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-
+import createSagaMiddlware from 'redux-saga';
 import history from './utils/history';
-
 import createRootReducer, { ReduxState } from './reducers';
+import rootSagas from './sagas/root.saga';
 
 /**
  * Create history middleware
@@ -12,6 +12,10 @@ import createRootReducer, { ReduxState } from './reducers';
  */
 const historyMiddleware = routerMiddleware(history);
 
+/**
+ * Create redux saga middleware
+ */
+const sagaMiddleware = createSagaMiddlware();
 /**
  * Enables redux devtools except in production mode
  * Use redux composer if devtools does not exist
@@ -29,9 +33,9 @@ const configureStore = (preloadedState?: ReduxState) => {
   const store = createStore(
     createRootReducer(history),
     preloadedState,
-    composeEnhancer(applyMiddleware(historyMiddleware, thunk))
+    composeEnhancer(applyMiddleware(historyMiddleware, thunk, sagaMiddleware))
   );
-
+  sagaMiddleware.run(rootSagas);
   return store;
 };
 
