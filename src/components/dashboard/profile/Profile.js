@@ -2,13 +2,15 @@ import * as React from 'react';
 import { Formik, Form } from 'formik';
 import { profileValidationSchema } from '../../validation/profile.validationSchema';
 import TextField from '../../common/textField';
+import { notify } from '../../../utils/notification';
+import { messageStatus } from '../../../constants/messageStatus';
+import { confirmationMessage, toastMessage } from '../../../constants/confirmationMessage';
 
 const Profile = () => {
   return (
     <React.Fragment>
       <div className="reset-block">
         {
-          // true ? (
           <Formik
             initialValues={{
               password: '',
@@ -16,7 +18,7 @@ const Profile = () => {
             }}
             validationSchema={profileValidationSchema}
             onSubmit={(values, actions) => {
-              console.log('values', values);
+              notify(messageStatus.SUCCESS, toastMessage.loggedOut);
               // this.handleSubmit(values.password);
             }}
             render={({ values, touched, handleChange, handleBlur, errors, dirty, isSubmitting }) => (
@@ -52,16 +54,6 @@ const Profile = () => {
               </Form>
             )}
           />
-          // ) : (
-          //   <React.Fragment>
-          //     <TextField type="password" name="password" placeholder="*******" label="Password" disabled={true} />
-          //     <div className="btn-wrapper">
-          //       <button className="btn btn--sm btn--green" onClick={() => this.resetPassword()}>
-          //         Change Password
-          //       </button>
-          //     </div>
-          //   </React.Fragment>
-          // )
         }
       </div>
     </React.Fragment>
