@@ -10,7 +10,19 @@ const overviewActions = {
   SET_WATCHED_INGREDIENTS: 'SET_WATCHED_INGREDIENTS'
 };
 
+const authActions = {
+  LOGIN_REQUEST: 'LOGIN_REQUEST',
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_FAILURE: 'LOGIN_FAILURE',
+  SET_USER: 'SET_USER',
+  GET_USER: 'GET_USER',
+  SET_TOKEN: 'SET_TOKEN',
+  CLEAR_STATE: 'CLEAR_STATE',
+  SET_ROLE: 'SET_ROLE'
+};
+
 export const Actions = {
   productActions,
-  overviewActions
+  overviewActions,
+  authActions
 };

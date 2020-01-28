@@ -1,0 +1,187 @@
+import { connect } from 'react-redux';
+import * as React from 'react';
+import { push } from 'connected-react-router';
+import { Formik, Form, Field } from 'formik';
+// import { isEmpty } from "lodash";
+// import NotifyHOC from "../../../utils/Notifications";
+import { Link } from 'react-router-dom';
+
+import TextField from '../common/textField';
+
+import { login } from '../../service/api/auth.service';
+import { ILogin } from '../interface/auth.interface';
+
+interface Token {
+  accessToken: string;
+  refreshToken: string;
+}
+interface IUserLoginProps {
+  changePath: (path: string) => void;
+  toastNotification: any;
+  setToken: (token: Token) => void;
+  login: (data: ILogin) => void;
+}
+interface IUserLoginState {
+  isLogging: boolean;
+  email: string;
+  password: string;
+}
+
+class UserLogin extends React.Component<IUserLoginProps, IUserLoginState> {
+  constructor(props: Readonly<IUserLoginProps>) {
+    super(props);
+    this.state = {
+      isLogging: false,
+      email: '',
+      password: ''
+    };
+  }
+
+  handleOnChange = (event: any): void => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    } as Pick<IUserLoginState, any>);
+  };
+
+  handleSubmit = async (values: any) => {
+    let data = { username: values.username, password: values.password };
+    await this.props.login(data);
+  };
+
+  render() {
+    const { changePath } = this.props;
+    // const isLoggedIn = this.props.user;
+    // if (isLoggedIn && isLoggedIn.name) {
+    //   //   changePath(WORKSPACE);
+    // }
+    return (
+      <div className="login">
+        <div className="login-box">
+          {/* {this.state.isLogging ? <Loader isFixed={true} /> : null} */}
+
+          <div className="login-box__left-container">
+            <span className="abstract-circle abstract-circle--item1" />
+            <span className="abstract-circle abstract-circle--item2" />
+            <span className="abstract-square abstract-square--item1" />
+            <span className="abstract-square abstract-square--item2" />
+            <div className="left-container-detail">
+              <div className="left-container-detail__logo">
+                <img src={'/assets/images/nexxt-logo.svg'} alt="Nexxt Inteligence" />
+              </div>
+              <p className="left-container-detail__text">
+                Welcome to the Next Generation of <br />
+                <strong>Cultural Research, Market Research, CX/EX Research</strong>
+              </p>
+            </div>
+          </div>
+
+          <div className="login-box__right-container">
+            <div className="login-box__block-title">Login</div>
+            <Formik
+              initialValues={{
+                username: '',
+                password: ''
+              }}
+              //   validationSchema={getLoginValidationSchema}
+              onSubmit={(values, actions) => {
+                return this.handleSubmit(values);
+              }}
+              render={({ values, touched, handleChange, handleBlur, errors, dirty, isSubmitting }) => (
+                <Field className="registration-forms">
+                  <input
+                    type="username"
+                    name="username"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.username}
+                  />
+                  {errors.username && touched.username && errors.username}
+
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                  />
+                  {errors.password && touched.password && errors.password}
+                  {/* <TextField
+                    type="text"
+                    name="email"
+                    className="form-group__control-md"
+                    value={values.email}
+                    onChange={() => handleChange}
+                    onBlur={() => handleBlur}
+                    placeholder="Email"
+                    label="E-mail"
+                    errorMessage={errors.email}
+                    touchedValue={touched.email}
+                  />
+
+                  <TextField
+                    type="password"
+                    name="password"
+                    className="form-group__control-md"
+                    value={values.password}
+                    onChange={() => handleChange}
+                    onBlur={() => handleBlur}
+                    placeholder="Password"
+                    label="Password"
+                    errorMessage={errors.password}
+                    touchedValue={touched.password}
+                  /> */}
+
+                  {/* <div className="form-group text-right">
+                    <Link to={FORGOT_PASSWORD} className="form-link">
+                      Forgot password?
+                    </Link>
+                  </div> */}
+
+                  <button
+                    // disabled={!isEmpty(errors) || this.state.isLogging || !dirty}
+                    type="submit"
+                    className="form-btn"
+                  >
+                    Login
+                  </button>
+                  {/* <div className="footer">
+                    <span className="footer__text">
+                      Don't have an account?{' '}
+                      <Link to={NEW_SIGNUP} className="footer__text--link">
+                        Create
+                      </Link>
+                    </span>
+                  </div> */}
+                </Field>
+              )}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (store: any) => {
+  const {
+    authReducer: {
+      // isLoggedIn,
+      //   user
+    }
+  } = store;
+  return {
+    // user
+    // isLoggedIn
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  login: (data: ILogin) => dispatch(login(data))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserLogin);

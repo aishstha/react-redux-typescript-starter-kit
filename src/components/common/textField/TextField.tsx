@@ -7,16 +7,17 @@ interface ITextFieldProps {
   label: string;
   disabled?: boolean;
   className?: string;
-  onBlur: () => void;
+  onBlur: (e: string | React.ChangeEvent<any>) => void;
   placeholder?: string;
-  errorMessage: string;
-  onChange: () => void;
-  touchedValue: string;
+  errorMessage?: string | any;
+  onChange: (e: string | React.ChangeEvent<any>) => void;
+  touchedValue?: string | any;
   col: string;
   required: boolean;
 }
+
 const TextField: React.SFC<ITextFieldProps> = ({
-  type = ' text',
+  type = 'text',
   name,
   value,
   label,
