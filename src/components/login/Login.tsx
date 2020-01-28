@@ -7,7 +7,7 @@ import { ILogin } from '../interface/auth.interface';
 import { login } from '../../service/api/auth.service';
 
 interface ILoginProps {
-  login: (data: ILogin) => void;
+  login: (username: string, password: string) => void;
 }
 
 interface ILoginState {
@@ -26,11 +26,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
 
   handleSubmit = async (event: any) => {
     event.preventDefault();
-    let data = {
-      username: this.state.username,
-      password: this.state.password
-    };
-    this.props.login(data);
+    this.props.login(this.state.username, this.state.password);
     // const resp = await axios.get(`https://api.github.com/users/${this.state.companyName}`);
     // this.props.onSubmit(resp.data);
     // this.setState({ companyName: '' });
@@ -79,7 +75,7 @@ const mapStateToProps = (store: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-  login: (data: ILogin) => dispatch(login(data))
+  login: (username: string, password: string) => dispatch(login(username, password))
 });
 
 export default connect(

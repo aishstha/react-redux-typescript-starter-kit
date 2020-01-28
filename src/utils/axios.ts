@@ -6,7 +6,7 @@ import config from '../config';
 const http = axios.create({
   baseURL: config.baseURI,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
   },
   timeout: 0
 });
