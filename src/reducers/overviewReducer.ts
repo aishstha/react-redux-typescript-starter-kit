@@ -28,7 +28,7 @@ export default (state = initialState, action: any) => {
     case Actions.overviewActions.SET_SUBSCRIBED_INGREDIENTS:
       return {
         ...state,
-        subscribedIngredients: [...action.payload]
+        subscribedIngredients: [action.payload]
       };
 
     case Actions.overviewActions.SET_WATCHED_INGREDIENTS:
