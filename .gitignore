@@ -25,3 +25,5 @@ yarn-error.log*
 # vscode
 .history
 .vscode
+
+node_modules

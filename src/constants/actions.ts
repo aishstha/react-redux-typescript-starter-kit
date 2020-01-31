@@ -10,7 +10,15 @@ const overviewActions = {
   SET_WATCHED_INGREDIENTS: 'SET_WATCHED_INGREDIENTS'
 };
 
+const adminActions = {
+  SET_REPORT: 'SET_REPORT',
+  ADD_NEW_REPORT: 'ADD_NEW_REPORT',
+  SELECT_REPORT: 'SELECT_REPORT',
+  UPDATE_REPORT: 'UPDATE_REPORT'
+};
+
 export const Actions = {
   productActions,
-  overviewActions
+  overviewActions,
+  adminActions
 };

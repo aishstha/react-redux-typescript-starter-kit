@@ -7,7 +7,7 @@ import Navbar from '../common/navbar';
 import DashboardRouter from './DashboardRouter';
 
 const Dashboard: React.SFC<RouteComponentProps<{}>> = () => (
-  <div>
+  <div className="flex-box">
     <Navbar />
     <div className="page-content">
       <Header />

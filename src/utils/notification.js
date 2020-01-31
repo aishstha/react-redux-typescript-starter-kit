@@ -12,7 +12,6 @@ import { notificationDefaultMessage } from '../constants/applicationMessage';
  */
 
 export const notify = (type, message) => {
-  debugger;
   switch (type) {
     case messageStatus.SUCCESS:
       toast.success(message || notificationDefaultMessage.SUCCESS, {

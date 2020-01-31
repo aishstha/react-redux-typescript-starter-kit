@@ -1,11 +1,11 @@
-@import "./reset.scss";
+@import './reset.scss';
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
 }
 
@@ -52,11 +52,7 @@ body {
 }
 
 .jumbotron {
-  background: -webkit-linear-gradient(
-    45deg,
-    rgb(49, 61, 142) 0%,
-    rgb(77, 93, 207) 100%
-  );
+  background: -webkit-linear-gradient(45deg, rgb(49, 61, 142) 0%, rgb(77, 93, 207) 100%);
   display: flex;
   padding: 12px;
   justify-content: space-between;
@@ -85,4 +81,20 @@ body {
       }
     }
   }
+}
+
+.container {
+  display: flex;
+}
+.container > div {
+  flex: 1; /*grow*/
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-box {
+  display: flex;
 }
